@@ -1,6 +1,6 @@
 {
   "name": "deopt",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "De-optionalize a call to a function or constructor",
   "main": "deopt.js",
   "scripts": {
