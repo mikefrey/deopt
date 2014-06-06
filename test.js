@@ -1,16 +1,12 @@
-deopt
-=====
+var deopt = require('./deopt')
+var assert = require('assert')
 
-De-optionalize a call to a function or constructor
-
-
-```js
 // deopt a function:
 var add = deopt(function(a, b) {
   return a + b
 })
 // then call it with an options hash
-console.log('add', add({a:5, b:8}))
+assert.equal(add({a:5, b:8}), 13)
 
 
 
@@ -30,8 +26,8 @@ var Thang = deopt(Thing)
 
 var thing = Thang({a:5, b:8, c:12, d:55})
 
-console.log('add', thing.add())
-console.log('is instance?', thing instanceof Thing)
+assert.equal(thing.add(), 13)
+assert(thing instanceof Thing)
 
 
 // Provide a callback and do something with the result before
@@ -39,11 +35,11 @@ console.log('is instance?', thing instanceof Thing)
 
 Thang = deopt(Thing, function(thing, opts) {
   thing.b += opts.c
-  console.log('add', thing.add())
+  assert.equal(thing.add(), 25)
   return thing
 })
 
 
 Thang({a:5, b:8, c:12, d:55})
 
-```
+console.log('All tests pass')
